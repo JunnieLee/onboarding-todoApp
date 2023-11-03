@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.todoapp.InputViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="할일"
+                android:text="@={viewModel.content}"
                 android:inputType="textMultiLine">
                 <requestFocus/>
             </com.google.android.material.textfield.TextInputEditText>
@@ -49,6 +52,7 @@
                 android:hint="메모"
                 android:imeOptions="actionDone"
                 android:inputType="text"
+                android:text="@={viewModel.memo}"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,6 +64,8 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="입력완료"
+            android:enabled="@{!viewModel.content.empty}"
+            android:onClick="@{()-> viewModel.insertData()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
