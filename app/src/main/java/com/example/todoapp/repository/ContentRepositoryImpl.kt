@@ -13,4 +13,7 @@ class ContentRepositoryImpl @Inject constructor(private val contentDao: ContentD
         contentDao.insert(item)
     }
 
+    override suspend fun modify(item: ContentEntity) {
+        contentDao.insert(item) // 어짜피 충돌 발생시 덮어씌우기 때문에..
+    }
 }
