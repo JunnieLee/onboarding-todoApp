@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="할일"
+                android:textAppearance="@style/TextAppearance.App.Large"
                 android:text="@={viewModel.content}"
                 android:inputType="textMultiLine">
                 <requestFocus/>
@@ -50,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="메모"
+                android:textAppearance="@style/TextAppearance.App.Large.Bold"
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:text="@={viewModel.memo}"
@@ -63,7 +65,9 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:paddingHorizontal="@dimen/padding"
             android:paddingVertical="@dimen/padding_small"
-            android:text="입력완료"
+            android:text="입력 완료"
+            android:backgroundTint="#6DE8F8"
+            android:textAppearance="@style/TextAppearance.App.Large"
             android:enabled="@{!viewModel.content.empty}"
             android:onClick="@{()-> viewModel.insertData()}"
             app:layout_constraintBottom_toBottomOf="parent"
