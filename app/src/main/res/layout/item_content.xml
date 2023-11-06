@@ -13,8 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="@{()-> handler.onCheckedItem(item)}"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> handler.onClickItem(item)}"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp">
 
