@@ -3,6 +3,7 @@ package com.example.todoapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
@@ -51,11 +52,13 @@ class MainActivity : AppCompatActivity() {
         fun onClickItem(item:ContentEntity){
             InputActivity.start(this@MainActivity, item) // 수정
         }
-        fun onLongClickItem(item:ContentEntity){
-
+        fun onLongClickItem(item:ContentEntity):Boolean{
+            viewModel.deleteItem(item)
+            Toast.makeText(this@MainActivity, "삭제 완료", Toast.LENGTH_SHORT).show()
+            return false
         }
-        fun onCheckedItem(item:ContentEntity){
-            viewModel.updateItem(item)
+        fun onCheckedItem(item:ContentEntity, checked:Boolean){
+            viewModel.updateItem(item.copy(isDone=checked))
         }
     }
 }
