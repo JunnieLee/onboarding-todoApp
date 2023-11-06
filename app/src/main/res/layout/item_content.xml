@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:onClick="@{()-> handler.onClickItem(item)}"
         android:onLongClick="@{()->handler.onLongClickItem(item)}"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:paddingHorizontal="@dimen/padding"
+        android:paddingVertical="@dimen/padding_small">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/contentCheckBox"
@@ -36,10 +36,10 @@
             android:id="@+id/memoTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:hint="없음"
             android:drawableStart="@drawable/baseline_comment_24"
-            android:drawablePadding="8dp"
+            android:drawablePadding="@dimen/padding_small"
             android:text="@{item.memo}"
             android:textColorHint="#CCCCCC"
             app:layout_constraintEnd_toEndOf="parent"
