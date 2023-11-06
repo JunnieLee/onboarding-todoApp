@@ -12,6 +12,8 @@ class ContentViewHolder(
 
     fun bind(item: ContentEntity){
         binding.item = item
+        binding.handler = handler
+
         binding.contentCheckBox.paintFlags = if (item.isDone){
             binding.contentCheckBox.paintFlags + Paint.STRIKE_THRU_TEXT_FLAG
         } else {

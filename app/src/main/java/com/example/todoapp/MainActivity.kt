@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         fun onClickItem(item:ContentEntity){
             InputActivity.start(this@MainActivity, item) // 수정
         }
+        fun onLongClickItem(item:ContentEntity){
+
+        }
         fun onCheckedItem(item:ContentEntity){
             viewModel.updateItem(item)
         }
