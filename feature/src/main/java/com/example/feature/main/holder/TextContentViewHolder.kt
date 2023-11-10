@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import com.example.common.adapter.AutoBindViewHolder
 import com.example.common.adapter.HolderEvent
@@ -36,6 +37,7 @@ class TextContentViewHolder(
                 Color.BLACK
             })
         }
+
         this.contentCheckBox.paintFlags = if (item.isDone){
             Paint.STRIKE_THRU_TEXT_FLAG
         } else {
@@ -53,6 +55,7 @@ class TextContentViewHolder(
             val toggleButtonColor = if (item.isDone) {Color.BLUE} else {Color.GRAY}
             it.setColorFilter(toggleButtonColor)
         }
+        this.doneTextView.isVisible = item.isDone
     }
 
     companion object {
