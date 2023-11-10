@@ -94,7 +94,8 @@ class MainViewModel @Inject constructor(
     private suspend fun fetchListInfoFromDB(){
         // DB data fetch
         // & list UI state sync
-        // DB랑 sync해줄때는 isChecked가 디폴트 false로 일괄 세팅됨 (=isChecked 상태를 유지하고 싶다면 DB sync는 하면 안됨. UI state만 업데이트해야함)
+        // DB랑 sync해줄때는 isChecked가 디폴트 false로 일괄 세팅됨
+        // (=isChecked 상태를 유지하고 싶다면 DB sync는 하면 안됨. UI state만 업데이트해야함)
         val newList = loadToDoListUseCase.invoke().map{ item -> item.toTextContentUI()}
         emitReducer(MainReducer.UpdateContentList(list = newList))
     }

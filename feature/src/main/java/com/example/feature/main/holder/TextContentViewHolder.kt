@@ -27,9 +27,19 @@ class TextContentViewHolder(
         this.contentCheckBox.let{
             it.text = item.content
             it.isChecked = item.isChecked
-            it.setOnCheckedChangeListener { _, _ ->
+            it.setOnClickListener {
                 event.onItemCheck(item)
             }
+            it.setTextColor(if (item.isDone){
+                Color.BLUE
+            } else {
+                Color.BLACK
+            })
+        }
+        this.contentCheckBox.paintFlags = if (item.isDone){
+            Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            0
         }
         this.memoTextView.text = item.memo
 
@@ -43,13 +53,6 @@ class TextContentViewHolder(
             val toggleButtonColor = if (item.isDone) {Color.BLUE} else {Color.GRAY}
             it.setColorFilter(toggleButtonColor)
         }
-
-        this.contentCheckBox.paintFlags = if (item.isDone){
-            Paint.STRIKE_THRU_TEXT_FLAG
-        } else {
-            0
-        }
-
     }
 
     companion object {
