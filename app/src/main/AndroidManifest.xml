@@ -14,11 +14,11 @@
         android:theme="@style/Theme.TodoApp"
         tools:targetApi="31">
         <activity
-            android:name=".InputActivity"
+            android:name="com.example.feature.input.InputActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.feature.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
