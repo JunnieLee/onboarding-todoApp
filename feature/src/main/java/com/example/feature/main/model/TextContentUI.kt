@@ -11,7 +11,6 @@ data class TextContentUI(
     val isChecked: Boolean = false,
 )
 
-
 // mappers as extension function
 
 fun TextContent.toTextContentUI(isChecked: Boolean?=null) = TextContentUI(

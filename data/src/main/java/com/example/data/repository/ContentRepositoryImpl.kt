@@ -45,7 +45,7 @@ class ContentRepositoryImpl @Inject constructor(private val contentDao: ContentD
 
     override suspend fun read(id: Int): TextContent? {
         return withContext(Dispatchers.IO) {
-            return@withContext contentDao.read(id).toTextContent()
+            return@withContext contentDao.read(id)?.toTextContent()
         }
     }
 }

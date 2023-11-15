@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.BaseViewModel
 import com.example.domain.model.TextContent
+import com.example.domain.repository.ContentRepository
 import com.example.domain.usecase.AddToDoUseCase
 import com.example.domain.usecase.DeleteMultipleToDosUseCase
 import com.example.domain.usecase.DeleteToDoUseCase
@@ -32,6 +33,7 @@ class MainViewModel @Inject constructor(
 ): BaseViewModel<MainAction, MainState, MainEffect, MainReducer>(MainState(title = "", contentList = listOf())){
 
     override fun action(action: MainAction) {
+
         viewModelScope.launch(Dispatchers.IO) {
             when (action) {
                 MainAction.OnStart -> {
@@ -47,12 +49,16 @@ class MainViewModel @Inject constructor(
                     updateSingleItemInfoOnlyInUIState(updatedItem)
                 }
                 is MainAction.OnClickToggleIsDoneButton -> {
+
                     // item done 내역 수정
                     val updatedItem = action.item.copy(isDone=!action.item.isDone)
                     // (1) UI단 state 에서 특정 아이템 정보 업데이트
                     updateSingleItemInfoOnlyInUIState(updatedItem)
                     // (2) DB 단에서 특정 아이템 정보 업데이트
-                    modifyToDoUseCase.invoke(updatedItem.toTextContent())
+                    launch(Dispatchers.IO) {
+                        modifyToDoUseCase.invoke(updatedItem.toTextContent())
+                    }
+
                 }
                 is MainAction.OnClickEdit -> {
                     emitEffect(MainEffect.NavigateToInputWithModifyMode(action.item.toTextContent()))

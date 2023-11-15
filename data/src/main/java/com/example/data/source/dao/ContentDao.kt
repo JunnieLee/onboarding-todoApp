@@ -24,5 +24,5 @@ interface ContentDao {
     suspend fun deleteMultiple(items: List<ContentEntity>)
 
     @Query("SELECT * FROM Content WHERE id=:id")
-    fun read(id:Int): ContentEntity
+    fun read(id:Int): ContentEntity?
 }
